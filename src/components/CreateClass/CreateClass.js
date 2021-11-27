@@ -14,10 +14,11 @@ const CreateClass = () => {
                 onClose = {() =>setCreateClassDialog(false)}
                 open={createClassDialog}
                 arla-labelledBy="customized-dialog-title"
-                maxWidth={openform ? "lg":"xs"}
+                maxWidth="lg"
                 className="form__dialog"
             >
-                {openform ? <Form/> :(
+                <Form/>
+                {/* {openform ? <Form/> :(
                     <div>
                         <div className="class__title">
                         Using classroom at a school with students?
@@ -28,8 +29,7 @@ const CreateClass = () => {
                             <div className="class__checkboxWrapper">
                                 <Checkbox color="primary" onChange={() => setCheck(!check)} />
                                 <p>
-                                I've read and understand the above notice, and I'm not using
-                                Classroom at a school with students
+                                I've read and understood the above terms and conditions.
                                 </p>
                             </div>
                         </DialogContent>
@@ -43,7 +43,7 @@ const CreateClass = () => {
                         </DialogActions>
                     </div>
                     )
-                }
+                } */}
             </Dialog>
         </div>
         

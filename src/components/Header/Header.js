@@ -9,7 +9,7 @@ import { useStateValue } from 'context/context'
 const Header = ({children}) => {
     const classes = useStyles()
     const [anchorEl, setAnchorEl] = React.useState(null);
-    const {setCreateClassDialog, setJoinClassDialog} = useStateValue();
+    const {setCreateClassDialog, setJoinClassDialog, loggedInUser, logout} = useStateValue();
     
     const handleClick = (event) => setAnchorEl(event.currentTarget);
     //close menu
@@ -47,7 +47,7 @@ const Header = ({children}) => {
                             <MenuItem onClick={handleCreate}>Create Class</MenuItem>
                         </Menu>
                         <div>
-                            <Avatar className={classes.icon}/>
+                            <Avatar onClick={()=>logout()}  src={loggedInUser?.photoURL} className={classes.icon}/>
                         </div>
                     </div>
                 </Toolbar>
