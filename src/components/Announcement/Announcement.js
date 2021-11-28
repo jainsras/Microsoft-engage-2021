@@ -26,7 +26,13 @@ const Announcement = ({classData}) => {
                         <div>{item.sender}</div>
                         </div>
                         <p className="text">{item.text}</p>
-                        <img className="image" src={item.imageUrl} alt={item.text} />
+                        {item.imageUrl ?
+                        (
+                            <img className="image" src={item.imageUrl} alt={item.text} />
+                        ):(
+                            <p></p>
+                        )
+                        }
                     </div>
                 </div>
             ))}

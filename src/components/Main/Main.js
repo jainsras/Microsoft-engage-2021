@@ -10,28 +10,50 @@ const Main = ({classData}) => {
     const [showInput, setshowInput] = useState(false)
     const [inputValue, setinputValue] = useState('')
     const [image, setimage] = useState(null)
+    const [error, seterror] = useState()
     const chooseImage=(e)=>{
         if(e.target.files[0]){
             setimage(e.target.files[0])
         }
     }
     const handleUpload=()=>{
-        const uploadImage = storage.ref(`images/${image.name}`).put(image);
+        if(!image && inputValue===''){
+            seterror(true);
+        }
+        else if(!image){
+            seterror(false)
+            console.log(inputValue)
+            db.collection("announcements")
+            .doc("classes")
+            .collection(classData.id)
+            .add({
+                timstamp: firebase.firestore.FieldValue.serverTimestamp(),
+                text: inputValue,
+                sender: loggedInMail,
+            })
+        }
+        else if(image){
+            seterror(false)
+            const uploadImage = storage.ref(`images/${image.name}`).put(image);
 
-        uploadImage.on("state_changed", () => {
-            storage.ref("images").child(image.name).getDownloadURL()
-            .then((url) => {
-                db.collection("announcements")
-                .doc("classes")
-                .collection(classData.id)
-                .add({
-                    timstamp: firebase.firestore.FieldValue.serverTimestamp(),
-                    imageUrl: url,
-                    text: inputValue,
-                    sender: loggedInMail,
+            uploadImage.on("state_changed", () => {
+                storage.ref("images").child(image.name).getDownloadURL()
+                .then((url) => {
+                    db.collection("announcements")
+                    .doc("classes")
+                    .collection(classData.id)
+                    .add({
+                        timstamp: firebase.firestore.FieldValue.serverTimestamp(),
+                        imageUrl: url,
+                        text: inputValue,
+                        sender: loggedInMail,
+                    })
+                    // .then(()=>{
+                    //     setshowInput(false);
+                    // });
                 });
             });
-        });
+        }
     };
     return (
         <div className="main">
@@ -73,6 +95,8 @@ const Main = ({classData}) => {
                                         variant="filled"
                                         value={inputValue}
                                         onChange={(e) => setinputValue(e.target.value)}
+                                        error={error}
+                                        helperText={error && 'Cannot post empty announcement'}
                                         />
                                         <div className="form__buttons">
                                             <input color="primary" type="file"
