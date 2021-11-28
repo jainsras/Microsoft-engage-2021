@@ -1,0 +1,27 @@
+.ann__display {
+    background-color: #fff;
+    border: 0.0625rem solid #dadce0;
+    -webkit-border-radius: 0.5rem;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    margin-bottom: 1.5rem;
+  }
+  .top {
+    display: flex;
+    align-items: center;
+  }
+  .top > * {
+    margin-left: 10px;
+  }
+  .centre {
+    padding: 0.5rem 0;
+  }
+  .text {
+    margin: 10px 15px;
+  }
+  .image {
+    height: 150px;
+    width: 150px;
+    object-fit: contain;
+    margin-left: 10px;
+  }

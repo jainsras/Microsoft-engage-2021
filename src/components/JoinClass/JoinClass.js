@@ -14,6 +14,8 @@ const JoinClass = () => {
     const [error, setError] = useState()
     const [joinedData, setJoinedData] = useState()
     const [classExist, setClassExist] = useState(false)
+
+    // Checks if the class code provided is valid. If the class exists then create a new collection for joined classes. It further contains all the class data linked to the user email id.
     const handleJoinClass=(e)=>{
         e.preventDefault();
         db.collection('CreatedClasses')
@@ -52,8 +54,6 @@ const JoinClass = () => {
                 fullScreen
                 onClose = {() =>setJoinClassDialog(false)}
                 open={joinClassDialog}
-                // TransitionComponent={Transition}
-               
             >
                 <div className="joinClass">
                     <div className='joinClass__wrapper'>

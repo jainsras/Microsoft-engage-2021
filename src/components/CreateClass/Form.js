@@ -13,6 +13,8 @@ const Form = () => {
     const [room, setRoom] = useState('')
     const [subject, setSubject] = useState('')
     const {loggedInMail, setCreateClassDialog} = useStateValue();
+
+    // Creates a collection in firebase. It contains all the classes created by the user linked to his email id. And then the class info like id, className, owner, subject, section, room
     const addClass = (e)=>{
         e.preventDefault();
         const id = uuidV4();

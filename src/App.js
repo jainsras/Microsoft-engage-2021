@@ -1,11 +1,10 @@
-import { Unsubscribe } from '@mui/icons-material';
 import JoinedClasses from 'components/JoinedClasses/JoinedClasses';
 import { useStateValue } from 'context/context';
 import db from 'lib/firebase';
 import React, { useEffect } from 'react';
 import { useState } from 'react';
 import { BrowserRouter as Router, Switch, Route} from 'react-router-dom';
-import { Login, Drawer,Main } from './components';
+import { Login, Drawer, Main } from './components';
 import { IsUserRedirect, ProtectedRoute } from './routes/Routes'
 function App() {
   const {loggedInMail } = useStateValue();

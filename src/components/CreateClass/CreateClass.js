@@ -17,33 +17,8 @@ const CreateClass = () => {
                 maxWidth="lg"
                 className="form__dialog"
             >
-                <Form/>
-                {/* {openform ? <Form/> :(
-                    <div>
-                        <div className="class__title">
-                        Using classroom at a school with students?
-                        </div>
-                        <DialogContent className="class__content">
-                            <div className="class__text">
-                            </div>
-                            <div className="class__checkboxWrapper">
-                                <Checkbox color="primary" onChange={() => setCheck(!check)} />
-                                <p>
-                                I've read and understood the above terms and conditions.
-                                </p>
-                            </div>
-                        </DialogContent>
-                        <DialogActions>
-                            <Button autoFocus onClick={()=>setCreateClassDialog(false)}>
-                            Close
-                            </Button>
-                            <Button autoFocus color="primary" disabled={!check} onClick={()=>setOpenform(true)}>
-                            Continue
-                            </Button>
-                        </DialogActions>
-                    </div>
-                    )
-                } */}
+                {/* Enter all the details in the form to create your own classroom */}
+                <Form/> 
             </Dialog>
         </div>
         
